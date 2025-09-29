@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Mountain, MapPin, Clock, ArrowLeft } from "lucide-react"
+import { Mountain, MapPin, Clock, ArrowLeft, Heart, X } from "lucide-react"
 import Link from "next/link"
 
 // Fort data for Maharashtra
@@ -77,6 +77,16 @@ const regions = ["All Regions", "Konkan", "Raigad" , "Pune"]
 export default function SearchPage() {
   const [selectedRegion, setSelectedRegion] = useState("All Regions")
   const [filteredForts, setFilteredForts] = useState(fortsData)
+  const [wishlist, setWishlist] = useState<number[]>([])
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false)
+
+  const toggleWishlist = (fortId: number) => {
+    setWishlist((prev) =>
+      prev.includes(fortId) ? prev.filter((id) => id !== fortId) : [...prev, fortId]
+    )
+  }
+
+  const wishlistForts = fortsData.filter((fort) => wishlist.includes(fort.id))
 
   const handleSearch = () => {
     if (selectedRegion === "All Regions") {
@@ -108,10 +118,68 @@ export default function SearchPage() {
                 <h1 className="text-xl font-bold text-foreground">SummitSaga</h1>
               </div>
             </div>
+
+            {/* Wishlist Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex items-center space-x-2"
+              onClick={() => setIsWishlistOpen(!isWishlistOpen)}
+            >
+              <Heart className="h-4 w-4 text-red-500" />
+              <span>Wishlist ({wishlist.length})</span>
+            </Button>
           </div>
         </div>
       </div>
 
+      {/* Wishlist Drawer */}
+      {isWishlistOpen && (
+        <div className="fixed top-0 right-0 h-full w-80 bg-card border-l border-border shadow-lg z-50 p-4 overflow-y-auto">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-semibold flex items-center space-x-2">
+              <Heart className="h-5 w-5 text-red-500" /> <span>My Wishlist</span>
+            </h2>
+            <Button variant="ghost" size="icon" onClick={() => setIsWishlistOpen(false)}>
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+
+          {wishlistForts.length > 0 ? (
+            <div className="space-y-4">
+              {wishlistForts.map((fort) => (
+                <Card key={fort.id} className="border-border">
+                  <div className="flex items-center space-x-3 p-3">
+                    <img
+                      src={fort.image}
+                      alt={fort.name}
+                      className="w-16 h-16 object-cover rounded-md"
+                    />
+                    <div className="flex-1">
+                      <p className="font-medium">{fort.name}</p>
+                      <p className="text-sm text-muted-foreground">{fort.region}</p>
+                    </div>
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      onClick={() => toggleWishlist(fort.id)}
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-muted-foreground">
+              <Heart className="h-8 w-8 mx-auto mb-2" />
+              <p>No forts in wishlist</p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         {/* Search Section */}
         <div className="space-y-6">
@@ -191,7 +259,23 @@ export default function SearchPage() {
                       alt={fort.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+
+                    {/* Wishlist Heart Button */}
                     <div className="absolute top-3 right-3">
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className={`rounded-full ${wishlist.includes(fort.id) ? "text-red-500" : "text-gray-400"}`}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleWishlist(fort.id)
+                        }}
+                      >
+                        <Heart className={`h-5 w-5 ${wishlist.includes(fort.id) ? "fill-red-500" : ""}`} />
+                      </Button>
+                    </div>
+
+                    <div className="absolute top-3 left-3">
                       <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
                         {fort.elevation}
                       </Badge>
@@ -228,7 +312,6 @@ export default function SearchPage() {
                 </Card>
               ))}
             </div>
-            
 
             {filteredForts.length === 0 && (
               <Card className="border-border">
