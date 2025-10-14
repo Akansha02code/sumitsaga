@@ -148,7 +148,7 @@ const initialGroups: ChatGroup[] = fortsData.map((fort, index) => ({
 
 // --- Main Component ---
 
-export default function SearchPage() {
+const SearchPage = () => {
   const [selectedRegion, setSelectedRegion] = useState("All Regions");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredForts, setFilteredForts] = useState(fortsData);
@@ -172,28 +172,28 @@ export default function SearchPage() {
     );
   };
 
-const joinGroup = (groupId: number) => {
-  // 1. Update state (join the group and increase members)
-  if (!myChatGroups.includes(groupId)) {
-    setMyChatGroups((prev) => [...prev, groupId]);
-    setIsChatOpen(false); // Close chat drawer after joining
-    setAllChatGroups((prev) =>
-      prev.map((group) =>
-        group.id === groupId
-          ? { ...group, members: group.members + 1 }
-          : group
-      )
-    );
-  }
+  const joinGroup = (groupId: number) => {
+    // 1. Update state (join the group and increase members)
+    if (!myChatGroups.includes(groupId)) {
+      setMyChatGroups((prev) => [...prev, groupId]);
+      setIsChatOpen(false); // Close chat drawer after joining
+      setAllChatGroups((prev) =>
+        prev.map((group) =>
+          group.id === groupId
+            ? { ...group, members: group.members + 1 }
+            : group
+        )
+      );
+    }
 
-  // 2. Perform the Redirection
-  // **CHANGE THIS LINE to match your desired, non-dynamic route**
-  // Example: If your page is at `/chat`
-  router.push(`C:\Users\susha\OneDrive\Doc\SummitSaga\sumitsaga\components\chat\sks.html`); // <--- UPDATED REDIRECT HERE
+    // 2. Perform the Redirection
+    // **CHANGE THIS LINE to match your desired, non-dynamic route**
+    // Example: If your page is at `/chat`
+    router.push(`C:\Users\susha\OneDrive\Doc\SummitSaga\sumitsaga\components\chat\sks.html`); // <--- UPDATED REDIRECT HERE
 
-  // OR: If your page is at `/my-chat`
-  // router.push(`/my-chat`);
-};
+    // OR: If your page is at `/my-chat`
+    // router.push(`/my-chat`);
+  };
 
   const handleCreateGroup = () => {
     if (newGroupName.trim() === "") return;
@@ -616,7 +616,6 @@ const joinGroup = (groupId: number) => {
                     <CardDescription className="text-pretty mb-4">
                       {fort.description}
                     </CardDescription>
-
                     <div className="flex items-center justify-between text-sm">
                       <div className="flex items-center text-muted-foreground">
                         <Clock className="h-3 w-3 mr-1" />
@@ -631,6 +630,19 @@ const joinGroup = (groupId: number) => {
                         {fort.difficulty}
                       </Badge>
                     </div>
+                    {/* Add Chat Button */}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="mt-3 flex items-center"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(`/chat/${fort.id}`);
+                      }}
+                    >
+                      <MessageSquare className="h-4 w-4 mr-1" />
+                      Chat Planning
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
@@ -655,4 +667,6 @@ const joinGroup = (groupId: number) => {
       </div>
     </div>
   );
-}
+};
+
+export default SearchPage;
