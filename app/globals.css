@@ -6,7 +6,7 @@
 :root {
   /* Updated theme for Forts Explorer with earthy, historic colors */
   --background: oklch(0.98 0.005 85);
-  --foreground: oklch(0.15 0.02 45);
+  --foreground: oklch(96.715% 0.00011 271.152);
   --card: oklch(0.99 0.003 85);
   --card-foreground: oklch(0.15 0.02 45);
   --popover: oklch(0.99 0.003 85);
@@ -16,7 +16,7 @@
   --secondary: oklch(0.92 0.01 85);
   --secondary-foreground: oklch(0.25 0.02 45);
   --muted: oklch(0.94 0.008 85);
-  --muted-foreground: oklch(0.55 0.01 45);
+  --muted-foreground: oklch(100% 0.00011 271.152);
   --accent: oklch(0.65 0.12 25);
   --accent-foreground: oklch(0.98 0.005 85);
   --destructive: oklch(0.577 0.245 27.325);
@@ -31,21 +31,22 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-foreground: oklch(0% 0 0);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --bg1 : oklch(78.668% 0.0723 76.939);
 }
 
 .dark {
   /* Dark theme with sophisticated fort-inspired colors */
-  --background: oklch(0.08 0.01 45);
-  --foreground: oklch(0.92 0.005 85);
+  --background: oklch(12.212% 0.00001 271.152);
+  --foreground: oklch(97.315% 0.00011 271.152);
   --card: oklch(0.12 0.015 45);
-  --card-foreground: oklch(0.92 0.005 85);
+  --card-foreground: oklch(19.728% 0.00507 67.431);
   --popover: oklch(0.12 0.015 45);
   --popover-foreground: oklch(0.92 0.005 85);
   --primary: oklch(0.75 0.12 35);

@@ -133,7 +133,7 @@ const fortsData: Record<string, any> = {
     name: "Kalavantin Durg",
     region: "Raigad",
     image: "/kalavanti.jpeg",
-    difficulty: "Difficult",
+    difficulty: "Hard",
     duration: "3-4 hours",
     elevation: "701m",
     builtBy: "Satavahana Dynasty",
@@ -178,6 +178,56 @@ const fortsData: Record<string, any> = {
     trekDistance: "3.5 km from base village Thakurwadi",
     coordinates: { lat: 18.9702, lng: 73.2233 },
   },
+  "7": {
+  id: 7,
+  name: "Sindhudurg Fort",
+  region: "Kokan",
+  image: "/Sindhudurg.jpg",
+  difficulty: "Easy",
+  duration: "1-2 hours",
+  elevation: "Sea level (Island fort)",
+  builtBy: "Chhatrapati Shivaji Maharaj",
+  builtYear: "1664 CE",
+  description:
+    "A massive sea fort located off the Malvan coast, built by Chhatrapati Shivaji Maharaj to safeguard the Konkan coastline from foreign naval attacks.",
+  history:
+    "Sindhudurg Fort was constructed under the supervision of Hiroji Indulkar on the Kurte Island near Malvan in 1664 CE. Built using lime, laterite, and basalt, it was one of the strongest sea forts of the Maratha Empire. The fort housed temples dedicated to Shivaji Maharaj and other deities, and served as a key naval base protecting Maharashtra’s coastline. Its 3 km long fortified walls and hidden entrances made it nearly impregnable from the sea.",
+  features: [
+    "Massive 3 km long sea-facing fort walls",
+    "Temple dedicated to Chhatrapati Shivaji Maharaj",
+    "Hidden main entrance (Maha Darwaja)",
+    "Panoramic views of the Arabian Sea",
+    "Ancient freshwater wells inside the fort",
+  ],
+  bestTime: "November to February",
+  trekDistance: "Accessible by boat from Malvan jetty (~10 minutes)",
+  coordinates: { lat: 16.0567, lng: 73.4665 },
+},
+"8": {
+  id: 8,
+  name: "Vijaydurg Fort",
+  region: "Kokan",
+  image: "/Vijaydurg.jpg",
+  difficulty: "Easy",
+  duration: "2-3 hours",
+  elevation: "Sea level (Coastal fort)",
+  builtBy: "Bhoja II of Shilahar dynasty",
+  builtYear: "12th century CE (expanded by Chhatrapati Shivaji Maharaj)",
+  description:
+    "One of the oldest and strongest sea forts on the Konkan coast, known as the 'Gibraltar of the East' for its impregnable defenses and naval history.",
+  history:
+    "Originally built in the 12th century by Bhoja II of the Shilahar dynasty, Vijaydurg was later captured and expanded by Chhatrapati Shivaji Maharaj in the 17th century. It became a major shipbuilding yard and naval base of the Maratha Empire. The fort’s triple-layered walls, underwater defenses, and strategic location made it one of the most secure forts in India. It also served as the base of operations for Kanhoji Angre, the legendary Maratha Admiral.",
+  features: [
+    "Triple-layered fortified walls",
+    "Historic shipbuilding docks",
+    "Secret underwater escape route (now submerged)",
+    "Panoramic views of the Arabian Sea",
+    "Ancient bastions and cannon points",
+  ],
+  bestTime: "November to March",
+  trekDistance: "Easily reachable by road from Devgad town (~2 km)",
+  coordinates: { lat: 16.5508, lng: 73.3002 },
+},
 };
 
 const difficultyPrecautions: Record<string, string[]> = {
@@ -194,7 +244,10 @@ const difficultyPrecautions: Record<string, string[]> = {
   Hard: [
     "Experienced trekkers recommended; route finding can be tricky",
     "Carry 3–4L water, headlamp, first-aid kit, emergency blanket",
-    "Avoid windy cliff edges and loose rock; go with a group/guide",
+    "⚠️ Avoid the monsoon season — the rock-cut steps become extremely slippery and dangerous.",
+    "👟 Wear proper trekking shoes with a strong grip (no sandals or casual shoes).",
+    "🕕 Start early in the morning and never climb after dark.",
+    "🚫 Don’t take selfies or lean over the edges — the top is very steep with no railings.",
   ],
 };
 
@@ -247,7 +300,7 @@ export default function FortDetailsPage({
               <div className="flex items-center space-x-2">
                 <Mountain className="h-6 w-6 text-primary" />
                 <h1 className="text-xl font-bold text-foreground">
-                  Forts Explorer
+                SummitSaga
                 </h1>
               </div>
             </div>
@@ -310,9 +363,9 @@ export default function FortDetailsPage({
                   </div>
                   <div>
                     <p className="text-xl font-bold text-foreground">
-                      {Math.floor(Math.random() * 100)}
+                      {fort.difficulty}
                     </p>
-                    <p className="text-sm text-muted-foreground">Popularity</p>
+                    <p className="text-sm text-muted-foreground">Diffficulty level</p>
                   </div>
                   <div>
                     <p className="text-xl font-bold text-foreground">
@@ -366,7 +419,7 @@ export default function FortDetailsPage({
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Mountain className="h-5 w-5 mr-2 text-primary" />
-                  Key Features
+                  Information
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -409,7 +462,7 @@ export default function FortDetailsPage({
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Map Card */}
-            <Card className="border-border">
+            <Card className="border-border text-muted-foreground">
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <MapPin className="h-5 w-5 mr-2 text-primary" />
@@ -430,7 +483,7 @@ export default function FortDetailsPage({
                 </div>
                 <Button
                   variant="outline"
-                  className="w-full bg-transparent"
+                  className="w-full text-muted-foreground"
                   onClick={() => {
                     const query = fort.coordinates
                       ? `${fort.coordinates.lat},${fort.coordinates.lng}`

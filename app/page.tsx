@@ -41,10 +41,10 @@ export default function LoginPage() {
         </div>
 
         {/* Authentication Card */}
-        <Card className="border-border shadow-lg">
+        <Card className="border-border shadow-lg text-foreground">
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl text-center">Welcome Back</CardTitle>
-            <CardDescription className="text-center text-pretty">
+            <CardDescription className="text-center text-pretty text-muted-foreground">
               Sign in to continue your fort exploration journey
             </CardDescription>
           </CardHeader>
