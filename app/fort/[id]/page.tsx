@@ -50,7 +50,8 @@ const fortsData: Record<string, any> = {
     ],
     bestTime: "October to March",
     trekDistance: "2.5 km from base village & 6-7 km from lonavla St",
-    coordinates: { lat: 18.7108, lng: 73.4855 },
+    coordinates: { lat: 18.710596, lng: 73.475960
+ },
   },
   "2": {
     id: 2,
@@ -76,7 +77,7 @@ const fortsData: Record<string, any> = {
     ],
     bestTime: "October to March",
     trekDistance: "1.5 km from base village & 5-6 km from lonavla St",
-    coordinates: { lat: 18.7156, lng: 73.4889 },
+    coordinates: {  lat:18.721142 , lng: 73.489971},
   },
   "3": {
     id: 3,
@@ -101,7 +102,8 @@ const fortsData: Record<string, any> = {
     ],
     bestTime: "October to March",
     trekDistance: "3 km from base village",
-    coordinates: { lat: 18.7667, lng: 73.4833 },
+    coordinates: {  lat: 18.621254, lng: 73.385404
+},
   },
   "4": {
     id: 4,
@@ -126,7 +128,8 @@ const fortsData: Record<string, any> = {
     ],
     bestTime: "October to March",
     trekDistance: "2 km from base village",
-    coordinates: { lat: 18.6333, lng: 73.4833 },
+    coordinates: {  lat: 18.631933, lng: 73.512472
+},
   },
   "5": {
     id: 5,
@@ -151,7 +154,8 @@ const fortsData: Record<string, any> = {
     ],
     bestTime: "October to February",
     trekDistance: "3 km from base village Thakurwadi",
-    coordinates: { lat: 18.9698, lng: 73.2172 },
+    coordinates: { lat:18.982389, lng: 73.218046
+},
   },
   "6": {
     id: 6,
@@ -176,7 +180,8 @@ const fortsData: Record<string, any> = {
     ],
     bestTime: "October to February",
     trekDistance: "3.5 km from base village Thakurwadi",
-    coordinates: { lat: 18.9702, lng: 73.2233 },
+    coordinates: {  lat:18.982389, lng: 73.218046
+ },
   },
   "7": {
   id: 7,
@@ -201,7 +206,8 @@ const fortsData: Record<string, any> = {
   ],
   bestTime: "November to February",
   trekDistance: "Accessible by boat from Malvan jetty (~10 minutes)",
-  coordinates: { lat: 16.0567, lng: 73.4665 },
+  coordinates: { lat: 16.042507, lng: 73.459653
+ },
 },
 "8": {
   id: 8,
@@ -226,7 +232,7 @@ const fortsData: Record<string, any> = {
   ],
   bestTime: "November to March",
   trekDistance: "Easily reachable by road from Devgad town (~2 km)",
-  coordinates: { lat: 16.5508, lng: 73.3002 },
+  coordinates: {  lat: 16.560888, lng: 73.333181 },
 },
 };
 
